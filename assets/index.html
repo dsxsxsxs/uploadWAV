@@ -89,6 +89,7 @@
 			btn.type='button';
 			btn.value='upload';
 			btn.addEventListener('click', function(e){
+					this.disabled=true;
 				  var rd = new FileReader();
 					rd.onload=function(e){
 						// var formData = new FormData();
@@ -102,14 +103,13 @@
 		            type: 'POST',
 		            url: 'wav',
 		            data: formData,
-		            // processData: false,
-		            // contentType: false,
-								// dataType: 'json',
-		            // cache: false,
 		            success: function (rs){
+										btn.disabled=false;
 		                console.log(rs);
+										alert("success!");
 		            },
 		            error: function (jqXHR, textStatus, errorThrown){
+										btn.disabled=false;
 		                console.error('Error! '+ textStatus + ' - ' + errorThrown + '\n\n' + jqXHR.responseText);
 		            }
 		        });
